@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDsSNJHNgSTIFWKORHRV5RfUJ25p7AcbjA",
+    authDomain: "task-reminder-mark.firebaseapp.com",
+    databaseURL: "https://task-reminder-mark.firebaseio.com",
+    projectId: "task-reminder-mark",
+    storageBucket: "task-reminder-mark.appspot.com",
+    messagingSenderId: "168492252945"
+  }
 };
 
 /*
