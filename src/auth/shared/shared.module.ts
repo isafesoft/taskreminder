@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthFormComponent} from './component/auth-form/auth-form.component';
+import {AuthService} from './services/auth.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     AuthFormComponent
@@ -15,4 +16,13 @@ import {AuthFormComponent} from './component/auth-form/auth-form.component';
     AuthFormComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        AuthService
+      ]
+    }
+  }
+}

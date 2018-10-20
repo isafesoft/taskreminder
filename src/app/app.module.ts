@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { Store } from 'store';
-import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AuthModule} from '../auth/auth.module';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 import {RouterModule, Routes} from '@angular/router';
+
+import {AuthModule} from '../auth/auth.module';
+import {SharedModule} from '../auth/shared/shared.module';
 
 const routes: Routes = []
 
@@ -17,8 +20,7 @@ const routes: Routes = []
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+
     RouterModule.forRoot(routes),
     AuthModule,
   ],
