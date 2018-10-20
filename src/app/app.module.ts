@@ -6,15 +6,21 @@ import { Store } from 'store';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AuthModule} from '../auth/auth.module';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = []
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    RouterModule.forRoot(routes),
+    AuthModule,
   ],
   providers: [
     Store
