@@ -3,20 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { Store } from 'store';
-import {environment} from '../environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireAuthModule} from '@angular/fire/auth';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AuthModule} from '../auth/auth.module';
-import {SharedModule} from '../auth/shared/shared.module';
+import { NavComponent } from './components/nav/nav.component';
+import {HeaderComponent} from './components/header/header.component';
 
 const routes: Routes = []
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

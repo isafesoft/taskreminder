@@ -1,7 +1,13 @@
 <div>
   TaskReminder v1.0
   <div>
-    <h1>{{ user$ | async | json}}</h1>
+    <app-header
+      [user]="user$ | async"
+      (logout)="onLogout()"
+    ></app-header>
+    <app-nav
+      *ngIf="(user$ | async)?.authed"
+    ></app-nav>
   </div>
   <div class="wrapper">
     <router-outlet></router-outlet>

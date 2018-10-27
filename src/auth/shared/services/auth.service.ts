@@ -17,7 +17,7 @@ export class AuthService {
 
   auth$ = this.af.authState
     .pipe(tap(next => {
-      if(!next)  {
+      if (!next)  {
         this.store.set('user', null)
         return;
       }
@@ -28,6 +28,7 @@ export class AuthService {
         authed: true }
         this.store.set('user', user)
     }))
+
   constructor(
     private store: Store,
     private af: AngularFireAuth
@@ -39,5 +40,9 @@ export class AuthService {
 
   loginUser(email: string, password: string) {
     return this.af.auth.signInWithEmailAndPassword(email, password)
+  }
+
+  logoutUser() {
+    return this.af.auth.signOut();
   }
 }

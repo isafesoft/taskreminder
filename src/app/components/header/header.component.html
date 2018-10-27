@@ -1,0 +1,10 @@
+<div class="app-header">
+  <div class="wrapper">
+    <img src="/src/img/logo2.svg" height="100">
+    <div class="app-header__user-info"
+    *ngIf="user?.authed">
+      <span (click)="logoutUser()">
+      </span>
+    </div>
+  </div>
+</div>
