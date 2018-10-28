@@ -8,6 +8,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthModule} from '../auth/auth.module';
 import { NavComponent } from './components/nav/nav.component';
 import {HeaderComponent} from './components/header/header.component';
+import {HealthModule} from '../health/health.module';
 
 const routes: Routes = []
 
@@ -19,9 +20,9 @@ const routes: Routes = []
   ],
   imports: [
     BrowserModule,
-
     RouterModule.forRoot(routes),
     AuthModule,
+    HealthModule
   ],
   providers: [
     Store
