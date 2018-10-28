@@ -10,7 +10,9 @@ import { NavComponent } from './components/nav/nav.component';
 import {HeaderComponent} from './components/header/header.component';
 import {HealthModule} from '../health/health.module';
 
-const routes: Routes = []
+const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'schedule'}
+]
 
 @NgModule({
   declarations: [
