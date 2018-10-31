@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from '../auth/shared/guards/auth.guard';
+import {DataModule} from './data/data.module';
 
 export const ROUTES: Routes = [
   { path: 'schedule', canActivate: [AuthGuard], loadChildren: './schedule/schedule.module#ScheduleModule'},
@@ -12,7 +13,8 @@ export const ROUTES: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    DataModule.forRoot()
   ],
   declarations: []
 })
