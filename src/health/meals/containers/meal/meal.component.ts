@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meal} from '../../../data/services/meals.service';
 
 @Component({
   selector: 'app-meal',
@@ -9,6 +10,9 @@ export class MealComponent implements OnInit {
 
   constructor() { }
 
+  addNewMeal(event: Meal) {
+    console.log(event)
+  }
   ngOnInit() {
   }
 
