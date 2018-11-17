@@ -29,6 +29,10 @@ export class MealsService {
     this.meals$ = this.mealList.valueChanges().pipe(tap(next => this.store.set('meals', next)))
   }
 
+  addMeal(meal: Meal) {
+    return this.db.list(`meals/${this.uid}`).push(meal)
+  }
+
   get uid() {
     return this.authService.user.uid
   }
