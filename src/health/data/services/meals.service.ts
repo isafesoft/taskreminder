@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {Store} from 'store';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {AuthService} from '../../../auth/shared/services/auth.service';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {filter, map, tap} from 'rxjs/operators';
+
 import {nextTick} from 'q';
 
 export interface Meal {
@@ -42,6 +43,19 @@ export class MealsService {
 
   addMeal(meal: Meal) {
     return this.db.list(`meals/${this.uid}`).push(meal);
+  }
+
+  getMeal(key: string) {
+   if(!key) {
+     return of({})
+   }
+   else {
+     return this.store.select<Meal[]>('meals')
+       .pipe(
+       filter(Boolean),
+       map(meals => meals.find((meal: Meal) => meal.$key === key))
+       )
+   }
   }
 
   removeMeal(key: string) {
