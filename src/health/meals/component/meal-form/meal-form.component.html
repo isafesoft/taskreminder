@@ -44,13 +44,46 @@
       <div>
         <button class="button" type="button"
                 (click)="createMeal()"
+                *ngIf="!exists"
         >
           Create Meal
         </button>
-        <a class="button button--cancel" routerLink="['../']">
+        <button class="button" type="button"
+                (click)="updateMeal()"
+                *ngIf="exists"
+        >
+          Edit Meal
+        </button>
+
+        <a class="button button--cancel" [routerLink]="['../']">
           Cancel
         </a>
       </div>
+
+      <!--remove-->
+        <div class="meal-form__delete" *ngIf="exists">
+          <div
+               *ngIf="toggled"
+          >
+            <p>Delete ite?</p>
+            <button class="confirm" type="button"
+                    (click)="removeMeal()"
+            >
+              Yes
+            </button>
+            <button class="cancel" type="button"
+                    (click)="toggle()"
+            >
+              No
+            </button>
+
+          </div>
+          <!--change trash to button-->
+          <button class="button button--delete" type="button" (click)="toggle()">
+            Delete
+          </button>
+        </div>
+      <!--remove end-->
     </div>
 
   </form>

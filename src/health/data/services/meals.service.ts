@@ -41,8 +41,12 @@ export class MealsService {
       );
   }
 
+  get mealListTag() {
+    return `meals/${this.uid}`
+  }
+
   addMeal(meal: Meal) {
-    return this.db.list(`meals/${this.uid}`).push(meal);
+    return this.db.list(this.mealListTag).push(meal);
   }
 
   getMeal(key: string) {
@@ -56,6 +60,10 @@ export class MealsService {
        map(meals => meals.find((meal: Meal) => meal.$key === key))
        )
    }
+  }
+
+  updateMeal(key: string, meal: Meal) {
+      return this.db.object(this.mealListTag + key, ).update(meal)
   }
 
   removeMeal(key: string) {

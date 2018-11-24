@@ -22,6 +22,18 @@ export class MealComponent implements OnInit, OnDestroy {
     this.backToMeals()
   }
 
+  async updateMeal(event: Meal) {
+    const key = this.route.snapshot.params.id
+    await this.mealService.updateMeal(key, event)
+    this.backToMeals()
+  }
+
+  async removeMeal(event: Meal) {
+    const key = this.route.snapshot.params.id
+    await this.mealService.removeMeal(key)
+    this.backToMeals()
+  }
+
   ngOnInit() {
     this.subscription = this.mealService.meals$.subscribe()
     this.meal$ = this.route.params.pipe(switchMap(params =>
