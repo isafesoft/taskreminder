@@ -1,0 +1,91 @@
+<div class="workout-form">
+  <form action=""
+        [formGroup]="form"
+  >
+    <div class="workout-form__name">
+      <label>
+        <h3>Workout name</h3>
+        <input type="text"
+               placeholder="e.g. English Bakery"
+               formControlName="name"
+        >
+        <div class="error" *ngIf="required">
+          Name is required
+        </div>
+      </label>
+    </div>
+    <div class="workout-form__food">
+      <div class="workout-form__subtitle">
+        <h3>Food</h3>
+        <button type="button"
+                class="workout-form__add"
+                (click)="addIngredients()"
+        >
+          <img src="/src/img/add-white.svg" alt="">
+          Add
+        </button>
+      </div>
+      <div formArrayName="ingredients">
+        <label *ngFor="let c of ingredients.controls; index as i">
+          <input type="text"
+                 [formControlName]="i" placeholder="e.g. Eggs"
+          >
+          <span
+            class="workout-form__remove"
+            (click)="removeIngredients(i)"
+          >
+
+          </span>
+        </label>
+
+      </div>
+    </div>
+    <div class="workout-form__submit">
+      <div>
+        <button class="button" type="button"
+                (click)="createWorkout()"
+                *ngIf="!exists"
+        >
+          Create Workout
+        </button>
+        <button class="button" type="button"
+                (click)="updateWorkout()"
+                *ngIf="exists"
+        >
+          Edit Workout
+        </button>
+
+        <a class="button button--cancel" [routerLink]="['../']">
+          Cancel
+        </a>
+      </div>
+
+      <!--remove-->
+      <div class="workout-form__delete" *ngIf="exists">
+        <div
+          *ngIf="toggled"
+        >
+          <p>Delete item?</p>
+          <button class="confirm" type="button"
+                  (click)="removeWorkout()"
+          >
+            Yes
+          </button>
+          <button class="cancel" type="button"
+                  (click)="toggle()"
+          >
+            No
+          </button>
+
+        </div>
+        <!--change trash to button-->
+        <button class="button button--delete" type="button" (click)="toggle()">
+          Delete
+        </button>
+      </div>
+      <!--remove end-->
+    </div>
+
+  </form>
+</div>
+
